@@ -1,7 +1,7 @@
 //creamos nuestra db
 const mongoose = require('mongoose');
 
-URI=('mongodb://localhost/dbHoneypetPlus')
+URI=('mongodb+srv://admin:HoneyPet2021@cluster0.x424j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
 mongoose.connect(URI, {
     useNewUrlParser: true,

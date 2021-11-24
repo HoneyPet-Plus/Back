@@ -8,7 +8,10 @@ const UsuarioSchema = new Schema({
     "contraseña" : {  type : String ,  required : [ true ,  "La contraseña es obligatoria." ]  } ,
     "rol" : {  type : String ,  required : [ true ,  "El rol es obligatorio." ]  }, 
     "favoritos": Array,
-    "negocio_id":String
+    "negocio_id": {
+        type: Schema.Types.ObjectId,
+        ref:'Proveedores.models'
+    }
 })
 
 module.exports = mongoose.model('usuarios',UsuarioSchema)

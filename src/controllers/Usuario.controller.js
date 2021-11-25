@@ -29,8 +29,6 @@ module.exports = class UsuariosController{
 
     static async createUsuario(req,res){
 
-      console.log("Hola")
-
         try {    
             const {nombre,correo,contraseña,rol} = req.body;
             const NuevoUsuario = new Usuario({

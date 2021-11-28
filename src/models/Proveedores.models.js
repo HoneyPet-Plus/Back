@@ -8,7 +8,7 @@ const ProveedorSchema = new Schema({
   "eslogan" :  { type : String ,  required : [ true ,  "El eslogan es obligatorio." ]  } ,
   "descripcion_corta" : String ,
   "descripcion_empresa" : String ,
-  "imagen_destacada" :  { type: String , default:"" },
+  "imagen_destacada" :  { type: String , default:"https://i.imgur.com/0tu7RFV.jpg" },
   "color_tema":{type : String , default:"#333" },
   "horario_atencion" : { type: String,  required : [ true ,  "El Horario es obligatorio." ]  }  ,
   "telefono" :  { type: Number ,  required : [ true ,  "El teléfono es obligatorio." ]  } ,

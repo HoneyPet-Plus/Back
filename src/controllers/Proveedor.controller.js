@@ -31,7 +31,7 @@ module.exports = class ProveedorController{
     static async createProveedor(req,res){
 
         try {    
-            const {contacto_id, nombre_empresa,eslogan,descripcion_corta,descripcion_empresa,imagen_destacada,color_tema,telefono,direccion,email,horario_atencion,ubicacion_mapa,productos} = req.body;
+            const {contacto_id, nombre_empresa,eslogan,descripcion_corta,descripcion_empresa,imagen_destacada,color_tema,telefono,direccion,email,horario_atencion,ubicacion_mapa,web,otro,productos} = req.body;
           
             const nuevoProveedor = new Proveedor({
               contacto_id: contacto_id, 
@@ -41,13 +41,16 @@ module.exports = class ProveedorController{
               descripcion_empresa: descripcion_empresa,
               imagen_destacada: imagen_destacada,
               color_tema: color_tema,
+              horario_atencion: horario_atencion,
               telefono: telefono,
               direccion:direccion,
               email: email,
-              horario_atencion: horario_atencion,
+              web: web,
+              otro: otro,
               ubicacion_mapa: ubicacion_mapa,
               productos: productos
             })
+
   
             console.log("arriba")
 

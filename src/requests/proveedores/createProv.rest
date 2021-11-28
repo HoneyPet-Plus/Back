@@ -1,0 +1,35 @@
+POST http://localhost:4000/api/proveedor/create
+content-type: application/json
+Authorization: token xxx
+
+{
+    "contacto_id" : "61a2bb800ddd2a9ab7802c9b",
+    "nombre_empresa" : "Best Biz Ltda",
+    "eslogan" : "We are the best",
+    "descripcion_corta" : "lorem xehcgdb cs cd sd c sd c dchwdcsdjhcbvsdhjc sdj  dscig dc",
+    "descripcion_empresa" : "lorem lkjasdg hjg dck askdy ckuhdcguyc gkjahsdg ckjaysdhycfg lkajsdgc kajysdcg kajdshcg kajsdcf kajdscg hdshdgfsh",
+    "horario_atencion" : "L-D de 9am a 9pm",
+    "telefono" : 6012334455,
+    "direccion" : "Calle 1 # 2 - 3",
+    "email" : "biz@bbiz.com",
+    "web" : "www.bbiz.com",
+    "otro" : "Servicio a domicilius",
+    "ubicacion_mapa": [{"lat": 6.2441988,"log": -75.6512522}],
+    "productos" : [
+        {
+            "type":"Producto", 
+            "title":"Producto Estrella",
+            "desciption":"Este es un producto estrella fenomenal"
+        },
+        {
+            "type":"Servicio", 
+            "title":"Servicio dos",
+            "desciption":"Este es un servicio dos fenomenal"
+        },
+        {
+            "type":"Producto tres", 
+            "title":"Producto tres",
+            "desciption":"Este es un producto tres tambien fenomenal"
+        }
+    ]
+}

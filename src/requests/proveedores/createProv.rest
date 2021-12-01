@@ -1,6 +1,6 @@
 POST http://localhost:4000/api/proveedor/create
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWEyYmI4MDBkZGQyYTlhYjc4MDJjOWIiLCJpYXQiOjE2MzgxNDQ5NzF9.o_gWusWrrGaxQVnHAi5sYIxHE50QvA2owwIrD6bvwGU
 content-type: application/json
-Authorization: token xxx
 
 {
     "contacto_id" : "61a2bb800ddd2a9ab7802c9b",

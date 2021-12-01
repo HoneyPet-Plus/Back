@@ -105,6 +105,10 @@ module.exports = class UsuariosController{
             const token = jwt.sign({_id: usuario._id},'Secreta')
             res.json({
                 mensaje: 'Bienvenidos',
+                idUser: usuario._id,
+                correo: usuario.correo,
+                nombre: usuario.nombre,
+                rol: usuario.rol,
                 usuario,
                 token
             })

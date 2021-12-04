@@ -146,8 +146,7 @@ module.exports = class ProveedorController{
             
               await usuario.save()
               res.status(201).json({
-                mensaje: 'El proveedor se añadio a la lista de favoritos',
-                usuario
+                mensaje: 'El proveedor se añadioa la lista de favoritos'
               })
               }
 

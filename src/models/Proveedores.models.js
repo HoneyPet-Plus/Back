@@ -16,7 +16,7 @@ const ProveedorSchema = new Schema({
   "email" :  { type: String ,  required : [ true ,  "El email es obligatorio." ]  } ,
   "web":  String ,
   "otro":  String ,
-  "ubicacion_mapa" :  [{ type : Object ,  required : [ true ,  "La ubicación en el mapa es obligatoria." ]  } ],
+  "ubicacion_mapa" : { type : Object ,  required : [ true ,  "La ubicación en el mapa es obligatoria." ]  } ,
   "productos": [ {type : Object} ]
 })
 

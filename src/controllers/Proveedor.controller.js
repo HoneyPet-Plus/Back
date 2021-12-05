@@ -146,7 +146,7 @@ module.exports = class ProveedorController{
             
               await usuario.save()
               res.status(201).json({
-                mensaje: 'El proveedor se añadioa la lista de favoritos'
+                mensaje: 'El proveedor se añadió la lista de favoritos'
               })
               }
 
@@ -221,8 +221,11 @@ module.exports = class ProveedorController{
 
   static async deleteProveedorById(request, response) {
     try {
-      const id = request.params.id;
-      await Proveedor.deleteOne({ _id: id });
+      const idUser = request.params.idUser;
+      const idProv = request.params.idProv;
+      await Usuario.updateOne({_id: idUser},{negocio_id: null})
+      await Proveedor.deleteOne({ _id: idProv });
+
       response.status(200).json({mensaje: 'El proveedor ha sido eliminado'});
     } catch (err) {
       response.status(400).json({ message: err.message });

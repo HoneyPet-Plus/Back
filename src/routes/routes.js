@@ -19,7 +19,7 @@ router.get("/proveedor/all"       , proveedorController.getAllProveedores);
 router.get("/proveedor/id/:id"    , proveedorController.getProveedoresById);
 router.post('/proveedor/create'   ,  Auth.verificarToken  , proveedorController.createProveedor)
 router.put("/proveedor/id/:id"    ,   Auth.verificarToken, proveedorController.updateProveedorById);
-router.delete("/proveedor/id/:id" ,  Auth.verificarToken  , proveedorController.deleteProveedorById);
+router.delete("/proveedor/id/:idProv/:idUser" ,  Auth.verificarToken  , proveedorController.deleteProveedorById);
 router.post('/proveedor/favoritos/:idu/:idp'           ,  Auth.verificarToken, proveedorController.añadirFavoritos)
 router.post('/proveedor/eliminar/favoritos/:idu/:idp'  ,  Auth.verificarToken, proveedorController.eliminarFavoritos)
 

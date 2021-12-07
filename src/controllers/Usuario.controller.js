@@ -110,6 +110,7 @@ module.exports = class UsuariosController{
                 correo: usuario.correo,
                 nombre: usuario.nombre,
                 rol: usuario.rol,
+                favoritos: usuario.favoritos,
                 usuario,
                 token
             })
@@ -165,6 +166,7 @@ module.exports = class UsuariosController{
                   mensaje : 'El proveedor ya esta en tu lista de favoritos'
                 })
               }else{
+                console.log(proveedor)
                 usuario.favoritos = usuario.favoritos.concat(proveedor._id)
                 await usuario.save()
               res.status(201).json({

@@ -6,8 +6,21 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./database')
 
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static(__dirname + '/site/'))
+//     app.use('*',(req,res)=>{
+//       res.sendFile(__dirname + '/site/index.html')
+//     })
+// }
+
 //Configuración del puerto
 app.set('Port', process.env.PORT || 4000);
+
+app.use(express.static(__dirname + '/site/'))
+app.use('*',(req,res)=>{
+    res.sendFile(__dirname + '/site/index.html')
+})
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

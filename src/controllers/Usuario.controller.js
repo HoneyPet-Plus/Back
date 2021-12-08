@@ -122,6 +122,21 @@ module.exports = class UsuariosController{
         }
     }
 
+    static async obtenerFavoritos(req,res){
+
+      try {
+
+        const idUser = req.params.idu;
+        const usuario = await Usuario.findOne({_id:idUser})
+
+        res.status(200).json({
+          favoritos : usuario.favoritos
+        }) 
+      } catch (error) {
+          res.status(400).json(error);
+      }
+    }
+
     static async añadirFavoritos(req,res){
 
       try {

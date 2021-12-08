@@ -14,6 +14,8 @@ router.delete("/usuario/id/:id"           ,Auth.verificarToken  , usuarioControl
 router.put("/usuario/id/:id"              ,Auth.verificarToken  , usuarioController.updateUsuarioById);
 router.post('/usuario/favoritos/:idu/:idp', usuarioController.añadirFavoritos);
 router.post('/usuario/eliminar/favoritos/:idu/:idp'  ,  Auth.verificarToken, usuarioController.eliminarFavoritos)
+router.get('/usuario/favoritos/:idu',Auth.verificarToken, usuarioController.obtenerFavoritos);
+
 
 //Rutas Proveedores
 

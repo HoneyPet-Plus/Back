@@ -6,7 +6,7 @@ Auth.verificarToken = (req, res, next)=>{
 
     if(!req.headers.autorizacion){
         return res.json({
-          mensaje: "No estas autorizado"  
+          mensaje: "No estas autorizado perro"  
         })
     }
 

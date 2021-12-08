@@ -1,4 +1,5 @@
 const Usuario = require('../models/Usuarios.models')
+const Proveedor = require('../models/Proveedores.models')
 const bcrypt = require('bcryptjs')
 const jwt    = require('jsonwebtoken')
 
@@ -105,6 +106,11 @@ module.exports = class UsuariosController{
             const token = jwt.sign({_id: usuario._id},'Secreta')
             res.json({
                 mensaje: 'Bienvenidos',
+                idUser: usuario._id,
+                correo: usuario.correo,
+                nombre: usuario.nombre,
+                rol: usuario.rol,
+                favoritos: usuario.favoritos,
                 usuario,
                 token
             })
@@ -115,6 +121,142 @@ module.exports = class UsuariosController{
             })
         }
     }
+
+    static async obtenerFavoritos(req,res){
+
+      try {
+
+        const idUser = req.params.idu;
+        const usuario = await Usuario.findOne({_id:idUser})
+
+        res.status(200).json({
+          favoritos : usuario.favoritos
+        }) 
+      } catch (error) {
+          res.status(400).json(error);
+      }
+    }
+
+    static async añadirFavoritos(req,res){
+
+      try {
+
+        const idUser = req.params.idu;
+        const idProv = req.params.idp;
+        
+
+        const usuario = await Usuario.findOne({_id:idUser})
+        const proveedor = await Proveedor.findOne({_id:idProv})
+        
+        if(usuario == null){
+          res.status(400).json({
+                  mensaje: 'El usuario no existe'
+          })
+        }else{
+  
+          if(proveedor == null){
+            res.status(400).json({
+              mensaje: 'El proveedor no existe'
+            })
+          }else{
+            if(usuario.rol == 'Proveedor'){
+              res.status(400).json({
+                mensaje: 'El rol de tu cuenta no te permite tener favoritos'
+              })
+            }else{
+
+              var flag = false;
+              
+              usuario.favoritos.forEach(element => {
+              
+                if(element.equals(proveedor._id)){
+                  
+                  flag = true;
+                }
+              });
+
+              if(flag == true){
+                
+                res.status(201).json({
+                  mensaje : 'El proveedor ya esta en tu lista de favoritos'
+                })
+              }else{
+                console.log(proveedor)
+                usuario.favoritos = usuario.favoritos.concat(proveedor._id)
+                await usuario.save()
+              res.status(201).json({
+                mensaje: 'El proveedor se añadió la lista de favoritos'
+              })
+              }
+
+              
+            }
+          }
+        }
+
+      } catch (error) {
+          res.status(400).json(error);
+      }
+  }
+
+  static async eliminarFavoritos(req,res){
+
+    try {
+
+      const idUser = req.params.idu;
+      const idProv = req.params.idp;
+    
+      const usuario = await Usuario.findOne({_id:idUser})
+      const proveedor = await Proveedor.findOne({_id:idProv})
+
+      
+      if(usuario == null){
+        res.status(400).json({
+                mensaje: 'El usuario no existe'
+        })
+      }else{
+
+        if(proveedor == null){
+          res.status(400).json({
+            mensaje: 'El proveedor no existe'
+          })
+        }else{
+          
+          var indice = -1
+
+          for (let index = 0; index < usuario.favoritos.length; index++) {
+            if (usuario.favoritos[index].equals(proveedor._id)) {
+  
+              indice = index
+            }          
+          }
+
+          if(indice > -1){
+            
+            console.log(indice);
+            usuario.favoritos.splice(indice,1)
+            console.log(usuario.favoritos);
+            await usuario.save()
+            res.status(201).json({
+              mensaje: 'El proveedor se eliminado de la lista de favoritos',
+
+            })
+
+          }else{
+            res.status(201).json({
+              mensaje: 'El proveedor no esta en tu lista de favoritos',
+              usuario
+            })
+          }
+
+          
+        }
+      }
+
+    } catch (error) {
+        res.status(400).json(error);
+    }
+  }
 }
 
 
